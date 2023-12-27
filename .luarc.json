@@ -1,0 +1,11 @@
+{
+  "diagnostics.globals": ["vim",
+        "shdjdjsjejd",
+        "on_attachhsbbs",
+        "cmp_nvim_lsp"],
+    "diagnostics.disable": [
+        "lowercase-global",
+        "undefined-global",
+        "redundant-value"
+    ]
+}
