@@ -2,7 +2,7 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
 -- Noice History
-keymap.set("n", "<leader>n", "<cmd>NoiceTelescope<CR>", opts) -- Saving file
+keymap.set("n", "<leader>n", "<cmd>NoiceTelescope<CR>", { desc = "Noice History" })
 
 -- Normal
 keymap.set({ "i", "v" }, "jk", "<ESC>", opts)      -- Normal mode
@@ -14,16 +14,6 @@ vim.api.nvim_set_keymap('i', '<ESC>', '<Nop>', opts)
 vim.api.nvim_set_keymap('v', '<ESC>', '<Nop>', opts)
 vim.api.nvim_set_keymap('n', 'A', '<Nop>', opts)
 vim.api.nvim_set_keymap('x', '[[:normal! I]]', '<Nop>', opts)
-
--- Save and quit Neovim
--- keymap.set("n", "<C-w>", ":w<CR>", opts)   -- Saving file
--- keymap.set("n", "<C-q>", ":q<CR>", opts)   -- Quit Neovim
--- keymap.set("n", "<C-w>q", ":wq<CR>", opts) -- Save and quit Neovim
--- keymap.set("n", "<C-q>q", ":q!<CR>", opts) -- Quit Neovim without saving file
--- vim.api.nvim_set_keymap('n', ':w<CR>', '<Nop>', opts)
--- vim.api.nvim_set_keymap('n', ':q<CR>', '<Nop>', opts)
--- vim.api.nvim_set_keymap('n', ':wq<CR>', '<Nop>', opts)
--- vim.api.nvim_set_keymap('n', ':q!<CR>', '<Nop>', opts)
 
 -- Selecting
 keymap.set("n", "<C-a>", "gg<S-v>G", opts) -- Select all
@@ -40,18 +30,8 @@ vim.api.nvim_set_keymap('n', 'gg<S-v>G', '<Nop>', opts)
 -- Interactive search and replace
 keymap.set('n', '<leader>Sr', [[:%s/\<C-R><C-W>\>//gc<Left><Left><Left>]], { desc = "Write the word" })
 
--- Motion
--- keymap.set({ "n", "v" }, "z", "0", opts) -- First char of the line
--- keymap.set({ "n", "v" }, "x", "$", opts) -- Last char of the line
--- vim.api.nvim_set_keymap('n', '0', '<Nop>', opts)
--- vim.api.nvim_set_keymap('v', '0', '<Nop>', opts)
--- vim.api.nvim_set_keymap('n', '$', '<Nop>', opts)
--- vim.api.nvim_set_keymap('v', '$', '<Nop>', opts)
-
--- Deleting
-keymap.set("n", "de", "vb_d", opts) -- Delete a word backward
-keymap.set("n", "df", "dw", opts)   -- Delete a single word
-keymap.set("n", "dr", "D", opts)    -- Delete a word forward
+keymap.set("n", "df", "dw", opts) -- Delete a single word
+keymap.set("n", "dr", "D", opts)  -- Delete a word forward
 vim.api.nvim_set_keymap('n', 'vb_d', '<Nop>', opts)
 vim.api.nvim_set_keymap('n', 'dw', '<Nop>', opts)
 vim.api.nvim_set_keymap('n', 'D', '<Nop>', opts)
@@ -79,9 +59,12 @@ keymap.set("n", "<leader>Ls", "<cmd>LiveServerStart<CR>", { desc = "Start Live-S
 keymap.set("n", "<leader>Lc", "<cmd>LiveServerStop<CR>", { desc = "Stop Live-Sever" })
 
 
--- Set keybinds for RangerNvim
-keymap.set("n", "<leader>R", "<cmd>RnvimrToggle<CR>", { desc = "Open Ranger" })
-keymap.set("n", "<leader>r", "Q", { desc = "Close Ranger" })
+-- Set keybinds for Telescope
+keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find your keymaps" })
 
 
 -- Set keybinds for LSP
@@ -99,18 +82,6 @@ keymap.set("n", "<leader>gn", vim.diagnostic.goto_next, { desc = "Go to next dia
 keymap.set("n", "<leader>gK", vim.lsp.buf.hover, { desc = "Show documentation for what is under cursor" })
 keymap.set("n", "<leader>gR", ":LspRestart<CR>", { desc = "Restart LSP" })
 
-
--- Set keybinds for Telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find your keymaps" })
-
-
--- Set keybinds for Auto-session
-keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session" }) -- restore last workspace session for current directory
-keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session" })       -- save workspace session for current working directory
 
 
 local mapkey = require("util.keymapper").mapkey
@@ -156,11 +127,11 @@ mapkey("<C-Left>", "vertical resize +2", "n")
 mapkey("<C-Right>", "vertical resize -2", "n")
 
 
--- local api = vim.api
+local api = vim.api
 
 -- Comments
--- api.nvim_set_keymap("n", "<C-_>", "gtc", { noremap = false })
--- api.nvim_set_keymap("v", "<C-_>", "goc", { noremap = false })
+api.nvim_set_keymap("n", "<C-_>", "gtc", { noremap = false })
+api.nvim_set_keymap("v", "<C-_>", "goc", { noremap = false })
 
 -- Debugger
 -- api.nvim_set_keymap("n", "<leader>dt", ":DapUiToggle<Cr>", { noremap = true })

@@ -5,6 +5,7 @@ local config = function()
         name = " Telescope",
         c = { "Find String Under Cursor" },
         f = { "Find File" },
+        k = { "Find Keymaps" },
         r = { "Find Recent File" },
         s = { "Find String" },
         ["1"] = "which_key_ignore",
@@ -50,16 +51,11 @@ local config = function()
         s = { "Start Live Server" },
         c = { "Stop Live Server" },
       },
-      w = {
-        name = " Sessions Management",
-        r = { "Restore Session" },
-        s = { "Save Session" },
-      },
       t = {
         name = " Terminal",
+        f = { "Floating Terminal" },
         h = { "Horizontal Terminal" },
         v = { "Vertical Terminal" },
-        f = { "Floating Terminal" },
       }
     },
     { prefix = "<leader>" })
