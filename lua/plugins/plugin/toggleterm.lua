@@ -1,9 +1,17 @@
+local config = function()
+  require("toggleterm").setup({
+    open_mapping = [[<c-t>]],
+    shade_terminals = false,
+    shell = "zsh --login",
+  })
+end
+
 return {
   'akinsho/toggleterm.nvim',
   lazy = false,
   opts = {
     size = 20,
-    open_mapping = [[<c-\>]],
+    open_mapping = [[<c-t>]],
     hide_numbers = true,
     shade_filetypes = {},
     shade_terminals = true,
@@ -11,7 +19,7 @@ return {
     start_in_insert = true,
     insert_mappings = true,
     persist_size = true,
-    direction = "float",
+    direction = "horizontal",
     close_on_exit = true,
     shell = vim.o.shell,
     float_opts = {
@@ -23,11 +31,5 @@ return {
       },
     },
   },
-  config = function()
-    require("toggleterm").setup({
-      open_mapping = [[<c-\>]],
-      shade_terminals = false,
-      shell = "zsh --login",
-    })
-  end,
+  config = config,
 }

@@ -3,9 +3,7 @@ local config = function()
 
   lint.linters_by_ft = {
     javascript = { "eslint_d" },
-    typescript = { "eslint_d" },
     javascriptreact = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
     python = { "pylint" },
   }
 
@@ -20,7 +18,7 @@ local config = function()
 
   vim.keymap.set("n", "<leader>l", function()
     lint.try_lint()
-  end, { desc = "Trigger Linting" })
+  end, { desc = "Trigger Linting (p) " })
 end
 
 return {

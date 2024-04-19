@@ -1,6 +1,10 @@
 local config = function()
   local wk = require("which-key")
   wk.register({
+      --[[ c = {
+        name = "Placeholder",
+        r = { "Placeholder" }
+      }, ]]
       f = {
         name = " Telescope",
         c = { "Find String Under Cursor" },
@@ -8,7 +12,6 @@ local config = function()
         k = { "Find Keymaps" },
         r = { "Find Recent File" },
         s = { "Find String" },
-        ["1"] = "which_key_ignore",
       },
       S = {
         name = " Search & Replace",
@@ -60,13 +63,17 @@ local config = function()
     },
     { prefix = "<leader>" })
 end
+
+local init = function()
+  vim.o.timeout = true
+  vim.o.timeoutlen = 300
+end
+
+
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-  end,
+  init = init,
   opts = {
     mode = "n",
     prefix = "",

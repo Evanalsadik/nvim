@@ -44,9 +44,7 @@ local opts = {
 
 require("lazy").setup({
   { import = "plugins" },
-  { import = "plugins.lsp" },
-  { import = "plugins.debbug-adaptor" },
-  { import = "plugins.ui-improvement" },
-  { import = "plugins.text-helper" },
+--   { import = "plugins.debbug-adaptor" },
   { import = "plugins.plugin" },
+  { import = "plugins.standard" },
 })

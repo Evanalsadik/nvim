@@ -4,9 +4,7 @@ local config = function()
   conform.setup({
     formatters_by_ft = {
       javascript = { "prettier" },
-      typescript = { "prettier" },
       javascriptreact = { "prettier" },
-      typescriptreact = { "prettier" },
       css = { "prettier" },
       html = { "prettier" },
       json = { "prettier" },
@@ -28,7 +26,7 @@ local config = function()
       async = false,
       timeout_ms = 1000,
     })
-  end, { desc = "Format File Or Range " })
+  end, { desc = "Format File (p) " })
 end
 
 

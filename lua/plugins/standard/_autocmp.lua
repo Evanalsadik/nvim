@@ -1,13 +1,10 @@
 local config = function()
   local cmp = require("cmp")
-
   local luasnip = require("luasnip")
-
   local lspkind = require("lspkind")
 
   -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
   require("luasnip.loaders.from_vscode").lazy_load()
-
   cmp.setup({
     completion = {
       completeopt = "menu,menuone,preview",
@@ -32,7 +29,7 @@ local config = function()
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-      ["<C-e>"] = cmp.mapping.abort(),        -- close completion window
+      ["<Enter>"] = cmp.mapping.abort(),        -- close completion window
       ["<Tab>"] = cmp.mapping.confirm({ select = true }),
     }),
     -- sources for autocompletion
@@ -63,5 +60,5 @@ return {
     "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim",         -- vs-code like pictograms
   },
-  config = config
+  config = config,
 }

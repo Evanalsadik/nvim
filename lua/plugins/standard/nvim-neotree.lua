@@ -10,10 +10,19 @@ local config = function()
     { text = "󰌵", texthl = "DiagnosticSignHint" })
 
   require("neo-tree").setup({
+    git_icons = true,
+    source_selector = {
+      winbar = true,
+      statusline = true,
+      show_scrolled_off_parent_node = false,
+    },
     -- window settings
     window = {
+      mappings = {
+        ["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
+      },
       position = "left",
-      --[[ width = 30, ]]
+      width = 30,
       mapping_options = {
         noremap = true,
         nowait = true,
@@ -40,5 +49,5 @@ return {
     "MunifTanjim/nui.nvim",
     "3rd/image.nvim",              -- Optional image support in preview window
   },
-  config = config
+  config = config,
 }

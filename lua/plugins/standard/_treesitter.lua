@@ -2,44 +2,37 @@ local config = function()
   require("nvim-treesitter.configs").setup({
     -- basic things
     build = ":TSUpdate",
-
     indent = {
       enable = true,
     },
-
     autotag = {
       enable = true,
     },
-
     event = {
       "BufReadPre",
       "BufNewFile",
     },
-
     ensure_installed = {
       "markdown",
+      "markdown_inline",
+      "regex",
+      "vim",
       "jsonc",
       "javascript",
-      "typescript",
       "yaml",
       "html",
       "css",
-      "markdown",
       "bash",
       "lua",
       "dockerfile",
       "gitignore",
       "python",
-      "python",
     },
-
     auto_install = true,
-
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = true,
     },
-
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -52,7 +45,7 @@ local config = function()
 
     rainbow = {
       enable = true,
-      -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+      -- disable = { "jsx", "cpp" }, -- list of languages you want to disable the plugin for
       extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
       max_file_lines = nil, -- Do not enable for files with more than n lines, int
       -- colors = {}, -- table of hex strings

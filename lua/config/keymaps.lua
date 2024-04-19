@@ -1,57 +1,63 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
--- Noice History
-keymap.set("n", "<leader>n", "<cmd>NoiceTelescope<CR>", { desc = "Noice History" })
 
 -- Normal
-keymap.set({ "i", "v" }, "jk", "<ESC>", opts)      -- Normal mode
-keymap.set({ "i", "v" }, "kj", "<ESC>", opts)      -- Normal mode
-keymap.set('n', "o", "a", opts)                    -- Insert right Char mode
-keymap.set('n', "O", "A", opts)                    -- Insert right Line mode
-keymap.set('x', "<leader>i", [[:normal! I]], opts) -- Multiline edit in V-block mode
-vim.api.nvim_set_keymap('i', '<ESC>', '<Nop>', opts)
-vim.api.nvim_set_keymap('v', '<ESC>', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', 'A', '<Nop>', opts)
-vim.api.nvim_set_keymap('x', '[[:normal! I]]', '<Nop>', opts)
+-- keymap.set({ "i", "v" }, "jk", "<ESC>", opts)      -- Normal mode
+-- keymap.set({ "i", "v" }, "kj", "<ESC>", opts)      -- Normal mode
+-- keymap.set('n', "o", "a", opts)                    -- Insert right Char mode
+-- keymap.set('n', "O", "A", opts)                    -- Insert right Line mode
+-- keymap.set('x', "<leader>i", [[:normal! I]], opts) -- Multiline edit in V-block mode
+-- vim.api.nvim_set_keymap('i', '<ESC>', '<Nop>', opts)
+-- vim.api.nvim_set_keymap('v', '<ESC>', '<Nop>', opts)
+-- vim.api.nvim_set_keymap('n', 'A', '<Nop>', opts)
+-- vim.api.nvim_set_keymap('x', '[[:normal! I]]', '<Nop>', opts)
 
 -- Selecting
 keymap.set("n", "<C-a>", "gg<S-v>G", opts) -- Select all
-keymap.set("n", "<C-f>", "viw", opts)      -- Select a word
-keymap.set("n", "<C-y>", "yaw", opts)      -- Select and copy a word
-keymap.set("n", "<C-d>", "daw", opts)      -- Select and cut a word
-keymap.set("n", "<C-c>", "viwc", opts)     -- Select and edit a word
-vim.api.nvim_set_keymap('n', 'viwc', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', 'daw', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', 'yaw', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', 'viw', '<Nop>', opts)
+-- keymap.set("n", "<C-f>", "viw", opts)      -- Select a word
+-- keymap.set("n", "<C-y>", "yaw", opts)      -- Select and copy a word
+-- keymap.set("n", "<C-d>", "daw", opts)      -- Select and cut a word
+-- keymap.set("n", "<C-c>", "viwc", opts)     -- Select and edit a word
 vim.api.nvim_set_keymap('n', 'gg<S-v>G', '<Nop>', opts)
+
+-- Noice History
+keymap.set("n", "<leader>n", "<cmd>NoiceTelescope<CR>", { desc = "Noice History" })
 
 -- Interactive search and replace
 keymap.set('n', '<leader>Sr', [[:%s/\<C-R><C-W>\>//gc<Left><Left><Left>]], { desc = "Write the word" })
 
-keymap.set("n", "df", "dw", opts) -- Delete a single word
-keymap.set("n", "dr", "D", opts)  -- Delete a word forward
+-- keymap.set("n", "dr", "dw", opts) -- Delete a single word
+-- keymap.set("n", "df", "D", opts)  -- Delete a word forward
+keymap.set("n", "ds", "vb_d", opts)  -- Delete a word backward
 vim.api.nvim_set_keymap('n', 'vb_d', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', 'dw', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', 'D', '<Nop>', opts)
+-- vim.api.nvim_set_keymap('n', 'dw', '<Nop>', opts)
+-- vim.api.nvim_set_keymap('n', 'D', '<Nop>', opts)
 
 -- Indentation
-keymap.set("n", "+", "<<", opts) -- Left indentation
-keymap.set("n", "-", ">>", opts) -- Right indentation
-vim.api.nvim_set_keymap('n', '>>', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', '<<', '<Nop>', opts)
+-- keymap.set("n", "<leader>_", "<<", { desc = "Left indentation" }) -- Left indentation
+-- keymap.set("n", "<leader>+", ">>", { desc = "Right indentation" }) -- Right indentation
+-- vim.api.nvim_set_keymap('n', '>>', '<Nop>', opts)
+-- vim.api.nvim_set_keymap('n', '<<', '<Nop>', opts)
 
--- Undo and Redo
+-- Redo
 keymap.set("n", "r", "<C-r>", opts) -- Redo
-keymap.set("n", "u", "u", opts)     -- Undo
 vim.api.nvim_set_keymap('n', '<C-r>', '<Nop>', opts)
 
 
+-- Set keybinds for Vim-maximizer
+keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>", {desc = "Maximize/minimize a split"})
+
+
+-- Set keybinds for Tagbar
+keymap.set("n", "<leader>Tt", "<cmd>TagbarToggle<CR>", {desc = "Open Tagbar"})
+keymap.set("n", "<leader>Tc", "<cmd>TagbarClose<CR>", {desc = "Close Tagbar"})
+
+
 -- Set keybinds for ToggleTerm
-keymap.set("n", "<leader>th", "<Cmd>ToggleTerm size=10 direction=horizontal<Cr>", { desc = "Horizontal Terminal" })
-keymap.set("n", "<leader>tv", "<Cmd>ToggleTerm size=45 direction=vertical<Cr>", { desc = "Vertical Terminal" })
-keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float size=45<cr>", { desc = "Floating Terminal" })
+-- keymap.set("n", "<leader>th", "<Cmd>ToggleTerm size=10 direction=horizontal<Cr>", { desc = "Horizontal Terminal" })
+-- keymap.set("n", "<leader>tv", "<Cmd>ToggleTerm size=45 direction=vertical<Cr>", { desc = "Vertical Terminal" })
+-- keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float size=45<cr>", { desc = "Floating Terminal" })
 
 
 -- Set keybinds for Live-Sever
@@ -99,6 +105,9 @@ mapkey("<leader>bq", "BufferLinePickClose", "n", { desc = "Pick and delete buffe
 -- Directory Navigation
 mapkey("<leader>j", ":Neotree<CR>", "n", { desc = "Open Side Bar" })
 mapkey("<leader>k", ":Neotree close<CR>", "n", { desc = "close Side Bar" })
+mapkey("<C-b>", ":Neotree buffers<CR>", "n", { desc = "Buffers" })
+mapkey("<C-g>", ":Neotree git_status<CR>", "n", { desc = "Git Status" })
+mapkey("<C-f>", ":Neotree filesystem<CR>", "n", { desc = "File System" })
 
 -- Navigation
 mapkey("<C-h>", "wincmd h", "t")          -- Navigate Left
@@ -130,8 +139,8 @@ mapkey("<C-Right>", "vertical resize -2", "n")
 local api = vim.api
 
 -- Comments
-api.nvim_set_keymap("n", "<C-_>", "gtc", { noremap = false })
-api.nvim_set_keymap("v", "<C-_>", "goc", { noremap = false })
+api.nvim_set_keymap("n", "<leader>c", "gcc", { desc = "Line Comment" })
+-- api.nvim_set_keymap("v", "<leader>cb", "gbc", { desc = "Block comment" })
 
 -- Debugger
 -- api.nvim_set_keymap("n", "<leader>dt", ":DapUiToggle<Cr>", { noremap = true })
