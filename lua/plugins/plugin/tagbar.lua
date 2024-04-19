@@ -1,5 +1,5 @@
 return {
-  "preservim/tagbar",
-  lazy = true,
-  event = { "BufReadPre", "BufNewFile" },
+	"preservim/tagbar",
+	lazy = true,
+	event = { "BufReadPre", "BufNewFile" },
 }
