@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 -- Removing Tilde
-opt.fillchars='eob: '
+opt.fillchars = "eob: "
 
 -- Tab / Indentation
 opt.tabstop = 2
@@ -27,6 +27,7 @@ opt.cmdheight = 2
 opt.scrolloff = 5
 opt.completeopt = "menuone,noinsert,noselect"
 opt.cursorline = true
+opt.cursorcolumn = true
 
 -- Behaviour
 opt.hidden = true
@@ -44,6 +45,5 @@ opt.mouse:append("a")
 opt.clipboard:append("unnamedplus")
 opt.modifiable = true
 opt.guicursor =
-"n-v-c:block,i-ci-ve:ver25,r-cr:ver20,o:hor50,i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+	"n-v-c:block,i-ci-ve:ver25,r-cr:ver20,o:hor50,i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 opt.encoding = "UTF-8"
-
