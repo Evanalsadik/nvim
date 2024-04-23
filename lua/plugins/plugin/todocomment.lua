@@ -4,9 +4,17 @@ end
 
 return {
 	"folke/todo-comments.nvim",
-	dependencies = { "nvim-lua/plenary.nvim" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+	},
+	lazy = false,
 	event = "BufRead",
+	opts = {},
 	config = config,
 }
-
--- TODO jdjhhdhhh
+-- TODO: example
+-- HACK:
+-- PERF:
+-- NOTE:
+-- FIX:
+-- WARNING:

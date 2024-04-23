@@ -1,4 +1,4 @@
 return {
-  "szw/vim-maximizer",
-  lazy = false,
+	"szw/vim-maximizer",
+	lazy = false,
 }
