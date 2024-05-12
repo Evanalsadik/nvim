@@ -21,9 +21,10 @@ local config = function()
 			"tsserver",
 			"html",
 			"cssls",
-			-- "lua_ls",
+			"lua_ls",
 			"emmet_ls",
 			"pyright",
+			"golangci-lint-langserver",
 		},
 		-- auto-install configured servers (with lspconfig)
 		automatic_installation = true, -- not the same as ensure_installed
@@ -32,9 +33,10 @@ local config = function()
 	mason_tool_installer.setup({
 		ensure_installed = {
 			"prettier", -- prettier formatter
-			-- "stylua",   -- lua formatter
+			"stylua", -- lua formatter
 			"isort", -- python formatter
 			"black", -- python formatter
+			"ast-grep", -- golang formatter
 			"pylint", -- python linter
 			"eslint_d", -- js linter
 		},
