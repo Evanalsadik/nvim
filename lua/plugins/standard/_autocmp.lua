@@ -28,17 +28,17 @@ local config = function()
 			["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
 			["<C-b>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-e>"] = cmp.mapping.abort(), -- close completion window
 			["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-			["<Enter>"] = cmp.mapping.abort(), -- close completion window
 			["<Tab>"] = cmp.mapping.confirm({ select = true }),
 		}),
 		-- sources for autocompletion
 		sources = cmp.config.sources({
-			{ name = "nvim_lsp" }, -- lsp
-			{ name = "copilot" }, -- copilot autosuggestions
 			{ name = "luasnip" }, -- snippets
-			{ name = "path" }, -- file system paths
+			{ name = "nvim_lsp" }, -- lsp
 			{ name = "buffer" }, -- text within current buffer
+			{ name = "copilot" }, -- copilot autosuggestions
+			{ name = "path" }, -- file system paths
 		}),
 		-- configure lspkind for vs-code like pictograms in completion menu
 		formatting = {
